@@ -110,3 +110,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#コマンド履歴を共有
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+PROMPT_COMMAND='share_history'
+shopt -u histappend
+export HISTSIZE=9999
